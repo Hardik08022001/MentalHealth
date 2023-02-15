@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "379755492179",
+    "project_id": "metahelp-b7f0c",
+    "storage_bucket": "metahelp-b7f0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379755492179:android:81bf2decde750c415c27a6",
+        "android_client_info": {
+          "package_name": "com.dreamwalker.flutter_notebook_16th_story"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379755492179-e70j8at7cnclqvfcadib87stn7aobuo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0KCfmqfcGyjyD9WidpLki3KSbpkaN0UA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "379755492179-e70j8at7cnclqvfcadib87stn7aobuo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
