@@ -1,4 +1,5 @@
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:MetaHelp/meta_app/src/riverpod/bottom_tab_provider.dart';
@@ -7,6 +8,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'mental_chat_component.dart';
 import 'mental_home_component.dart';
 
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MentalHealthMainScreen());
+}
 class MentalHealthMainScreen extends StatefulWidget {
   const MentalHealthMainScreen({Key? key}) : super(key: key);
 

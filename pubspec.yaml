@@ -31,8 +31,10 @@ dependencies:
   google_sign_in: any
   cloud_firestore: any
   firebase_core: any
-
-
+  flutter_sound: any
+  permission_handler: any
+  path: any
+  assets_audio_player: any
   flutter_bloc: any
   cached_network_image: any
   smooth_page_indicator: ^1.0.0+2

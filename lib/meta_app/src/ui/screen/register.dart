@@ -1,5 +1,8 @@
+import 'package:MetaHelp/meta_app/src/authFunctions.dart';
 import 'package:MetaHelp/meta_app/src/ui/screen/login.dart';
 import 'package:flutter/material.dart';
+
+import '../../../mental_health_app.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -9,6 +12,10 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  final TextEditingController namecontroller = new TextEditingController();
+  final TextEditingController emailcontroller = new TextEditingController();
+  final TextEditingController passcontroller = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,8 +49,8 @@ class _MyRegisterState extends State<MyRegister> {
                       margin: EdgeInsets.only(left: 35, right: 35),
                       child: Column(
                         children: [
-                          TextField(
-                            style: TextStyle(color: Colors.white),
+                          TextFormField(
+                            controller: namecontroller,
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -66,8 +73,17 @@ class _MyRegisterState extends State<MyRegister> {
                           SizedBox(
                             height: 30,
                           ),
-                          TextField(
-                            style: TextStyle(color: Colors.white),
+                          TextFormField(
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return ("Please Enter Your Email");
+                              }
+                              if(!RegExp("^[a-zA-Z0-9+_.]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)){
+                                return("Please Enter a valid email");
+                              }
+                              return null;
+                            },
+                            controller: emailcontroller,
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -90,8 +106,17 @@ class _MyRegisterState extends State<MyRegister> {
                           SizedBox(
                             height: 30,
                           ),
-                          TextField(
-                            style: TextStyle(color: Colors.white),
+                          TextFormField(
+                            // validator: (value){
+                            //   RegExp regex = new RegExp(r'^.{6,}$');
+                            //   if (value!.isEmpty) {
+                            //     return("Password is required for login");
+                            //   }
+                            //   if (!regex.hasMatch(value)){
+                            //     return ("Please Enter Valid Password(Min. 6 Character");
+                            //   }
+                            // },
+                            controller: passcontroller,
                             obscureText: true,
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -130,7 +155,10 @@ class _MyRegisterState extends State<MyRegister> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      signup(emailcontroller.text, passcontroller.text);
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=> MentalHealthApp()));
+                                    },
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),

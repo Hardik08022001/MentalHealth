@@ -1,3 +1,4 @@
+import 'package:MetaHelp/meta_app/src/ui/screen/login.dart';
 import 'package:coolicons/coolicons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -47,8 +48,10 @@ class MentalHomeComponent extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {},
-                icon: const Icon(Coolicons.settings_future),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MyLogin()));
+                },
+                icon: const Icon(Coolicons.log_out),
               ),
             ],
           ),

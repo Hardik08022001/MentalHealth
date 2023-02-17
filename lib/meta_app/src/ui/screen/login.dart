@@ -1,3 +1,4 @@
+import 'package:MetaHelp/meta_app/src/authFunctions.dart';
 import 'package:MetaHelp/meta_app/src/ui/screen/mental_home_component.dart';
 import 'package:MetaHelp/meta_app/src/ui/screen/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import '../../../mental_health_app.dart';
+import 'mental_health_main_screen.dart';
 
 
 
@@ -129,7 +131,8 @@ class _MyLoginState extends State<MyLogin> {
                                   child: IconButton(
                                       color: Colors.white,
                                       onPressed: () {
-                                        signIn(emailcontroller.text, passcontroller.text);
+                                        signin(emailcontroller.text, passcontroller.text);
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MentalHealthApp()));
                                       },
                                       icon: Icon(
                                         Icons.arrow_forward,
@@ -158,7 +161,8 @@ class _MyLoginState extends State<MyLogin> {
                                   style: ButtonStyle(),
                                 ),
                                 TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                    },
                                     child: Text(
                                       'Forgot Password',
                                       style: TextStyle(
@@ -181,21 +185,5 @@ class _MyLoginState extends State<MyLogin> {
         ),
       ),
     );
-  }
-
-  void signIn(String email, String pass) async
-  {
-    if(_formKey.currentState!.validate())
-      {
-        await _auth
-            .signInWithEmailAndPassword(email: email, password: pass)
-            .then((uid) => {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => MentalHealthApp())),
-        }).catchError((e)
-        {
-
-        });
-      }
   }
 }
